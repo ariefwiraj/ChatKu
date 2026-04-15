@@ -8,7 +8,7 @@ import { useSessionToken } from "@/hooks/useSessionToken";
 
 export default function ChatPage() {
   const { token } = useSessionToken();
-  const { messages, isLoading, sendMessage, sessionId } = useChat({
+  const { messages, isLoading, sendMessage } = useChat({
     sessionToken: token,
   });
 

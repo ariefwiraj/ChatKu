@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion"; (removed to fix lint error)
 import { SendHorizontal } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 

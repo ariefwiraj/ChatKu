@@ -30,18 +30,18 @@ export default function MessageBubble({ role, content }: MessageBubbleProps) {
         <div className="prose prose-sm dark:prose-invert max-w-none text-current">
           <ReactMarkdown
             components={{
-              p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
-              ul: ({ node, ...props }) => <ul className="list-disc ml-4 mb-2" {...props} />,
-              ol: ({ node, ...props }) => <ol className="list-decimal ml-4 mb-2" {...props} />,
-              li: ({ node, ...props }) => <li className="mb-1" {...props} />,
-              code: ({ node, ref, className, children, ...props }) => {
-                const match = /language-(\w+)/.exec(className || '');
-                return !className ? (
+              p: ({ node: _node, ...props }) => <p className="mb-2 last:mb-0" {...props} />, // eslint-disable-line @typescript-eslint/no-unused-vars
+              ul: ({ node: _node, ...props }) => <ul className="list-disc ml-4 mb-2" {...props} />, // eslint-disable-line @typescript-eslint/no-unused-vars
+              ol: ({ node: _node, ...props }) => <ol className="list-decimal ml-4 mb-2" {...props} />, // eslint-disable-line @typescript-eslint/no-unused-vars
+              li: ({ node: _node, ...props }) => <li className="mb-1" {...props} />, // eslint-disable-line @typescript-eslint/no-unused-vars
+              code: ({ node: _node, className, children, ref: _ref, ...props }) => { // eslint-disable-line @typescript-eslint/no-unused-vars
+                const isInline = !className;
+                return isInline ? (
                   <code className="bg-black/20 rounded px-1.5 py-0.5 text-[0.9em]" {...props}>
                     {children}
                   </code>
                 ) : (
-                  <pre className="bg-[#0d0d12] border border-border rounded-lg p-4 overflow-x-auto my-3 text-[0.9em]" {...props as any}>
+                  <pre className="bg-[#0d0d12] border border-border rounded-lg p-4 overflow-x-auto my-3 text-[0.9em]" {...props}>
                     <code className={className}>
                       {children}
                     </code>
